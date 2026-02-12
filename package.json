@@ -1,0 +1,58 @@
+{
+  "name": "fetchmd",
+  "version": "0.1.0",
+  "description": "Fetch markdown snapshots of web pages using Cloudflare Markdown for Agents",
+  "type": "module",
+  "bin": {
+    "fetchmd": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charl-kruger/fetchmd"
+  },
+  "homepage": "https://github.com/charl-kruger/fetchmd#readme",
+  "bugs": {
+    "url": "https://github.com/charl-kruger/fetchmd/issues"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx}\"",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "pnpm type-check && pnpm test && pnpm build",
+    "publish:dry-run": "npm publish --dry-run",
+    "publish:npm": "npm publish --access public"
+  },
+  "keywords": [
+    "cli",
+    "markdown",
+    "cloudflare",
+    "agents",
+    "context"
+  ],
+  "license": "Apache-2.0",
+  "author": "Charl Kruger",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "domhandler": "^5.0.3",
+    "htmlparser2": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "prettier": "^3.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.16"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
