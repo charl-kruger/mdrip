@@ -9,6 +9,15 @@ This repo also includes an AI-consumable skills catalog in `skills/`, following 
 - Skill index: `skills/README.md`
 - mdrip skill: `skills/mdrip/SKILL.md`
 
+### Install skills from this repo
+
+If you use a Skills-compatible agent setup, you can add these skills directly:
+
+```bash
+# install skills from this repo
+npx skills add charl-kruger/mdrip
+```
+
 ## Why
 
 For agent workflows, markdown is often better than HTML:
@@ -20,6 +29,22 @@ For agent workflows, markdown is often better than HTML:
 
 If a site does not return `text/markdown`, `mdrip` can automatically fall back to converting `text/html` into markdown.
 The fallback uses an in-project converter optimized for common documentation/blog content (headings, links, lists, code blocks, tables, blockquotes).
+
+## Why Cloudflare Markdown for Agents matters
+
+Cloudflare's blog and docs describe Markdown for Agents as content negotiation at the edge:
+- clients request `Accept: text/markdown`
+- Cloudflare converts HTML to markdown in real time (for enabled zones)
+- response includes `x-markdown-tokens` for token-size awareness
+
+For AI workflows this is high-value:
+- better structure for LLM parsing than raw HTML
+- less token waste in context windows
+- predictable markdown snapshots you can store and reuse in your repo
+
+References:
+- [Cloudflare blog: Markdown for Agents](https://blog.cloudflare.com/markdown-for-agents/)
+- [Cloudflare docs: Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/)
 
 ## Installation
 
