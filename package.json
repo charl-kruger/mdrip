@@ -1,6 +1,6 @@
 {
   "name": "mdrip",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Fetch markdown snapshots of web pages using Cloudflare Markdown for Agents",
   "type": "module",
   "main": "./dist/web.js",
