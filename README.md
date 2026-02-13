@@ -58,6 +58,48 @@ Or use with `npx`:
 npx mdrip <url>
 ```
 
+For programmatic usage in Node.js or Workers:
+
+```bash
+npm install mdrip
+```
+
+## Programmatic API
+
+### Node.js (fetch and store)
+
+```ts
+import { fetchToStore, listStoredPages } from "mdrip/node";
+
+const result = await fetchToStore("https://developers.cloudflare.com/", {
+  cwd: process.cwd(),
+});
+
+if (!result.success) {
+  throw new Error(result.error || "Failed to fetch page");
+}
+
+const pages = await listStoredPages(process.cwd());
+console.log(pages.map((p) => p.path));
+```
+
+### Cloudflare Workers / Agent runtimes (raw in-memory markdown)
+
+```ts
+import { fetchMarkdown } from "mdrip";
+
+const page = await fetchMarkdown(
+  "https://blog.cloudflare.com/markdown-for-agents/",
+);
+
+console.log(page.markdownTokens);
+console.log(page.markdown);
+```
+
+Available programmatic methods:
+- `mdrip` (Workers-safe): `fetchMarkdown(url, options)`, `fetchRawMarkdown(url, options)`
+- `mdrip/node` (filesystem features): `fetchToStore(url, options)`, `fetchManyToStore(urls, options)`, `listStoredPages(cwd?)`
+
 ## Usage
 
 ### Fetch pages

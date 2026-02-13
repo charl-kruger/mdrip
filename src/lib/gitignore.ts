@@ -2,7 +2,7 @@ import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
 import { existsSync } from "fs";
 
-const MDRIP_ENTRY = "mdrip/";
+const MDRIP_ENTRY = "/mdrip/";
 const MARKER_COMMENT = "# mdrip - markdown snapshots for agents";
 
 export async function hasMdripEntry(
@@ -20,7 +20,12 @@ export async function hasMdripEntry(
 
     return lines.some((line) => {
       const trimmed = line.trim();
-      return trimmed === MDRIP_ENTRY || trimmed === "mdrip";
+      return (
+        trimmed === MDRIP_ENTRY ||
+        trimmed === "mdrip/" ||
+        trimmed === "/mdrip" ||
+        trimmed === "mdrip"
+      );
     });
   } catch {
     return false;

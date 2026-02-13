@@ -1,8 +1,24 @@
 {
   "name": "mdrip",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Fetch markdown snapshots of web pages using Cloudflare Markdown for Agents",
   "type": "module",
+  "main": "./dist/web.js",
+  "types": "./dist/web.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/web.d.ts",
+      "import": "./dist/web.js"
+    },
+    "./node": {
+      "types": "./dist/api.d.ts",
+      "import": "./dist/api.js"
+    },
+    "./cli": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "bin": {
     "mdrip": "./dist/index.js"
   },
