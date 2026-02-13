@@ -13,7 +13,7 @@ program
   .description(
     "Fetch markdown snapshots for URLs using Cloudflare Markdown for Agents",
   )
-  .version("0.1.3")
+  .version("0.1.4")
   .option("--cwd <path>", "working directory (default: current directory)");
 
 program
